@@ -24,4 +24,8 @@ class SplashActivity : PresenterIActivity<SplashContract.Presenter>(), SplashCon
     override fun getPresenter(): SplashContract.Presenter {
         return mPresenter
     }
+
+    override fun setUpView() {
+        super.setUpView()
+    }
 }

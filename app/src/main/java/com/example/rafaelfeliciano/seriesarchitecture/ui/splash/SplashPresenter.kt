@@ -4,4 +4,6 @@ import com.example.rafaelfeliciano.seriesarchitecture.ui.base.IModelPresenterImp
 import javax.inject.Inject
 
 class SplashPresenter @Inject
-constructor() : IModelPresenterImpl<SplashContract.View>(), SplashContract.Presenter
+constructor(
+
+) : IModelPresenterImpl<SplashContract.View>(), SplashContract.Presenter

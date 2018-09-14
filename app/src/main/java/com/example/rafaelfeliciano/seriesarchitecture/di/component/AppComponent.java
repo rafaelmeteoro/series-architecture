@@ -6,6 +6,7 @@ import com.example.rafaelfeliciano.seriesarchitecture.App;
 import com.example.rafaelfeliciano.seriesarchitecture.di.modules.ActivityModule;
 import com.example.rafaelfeliciano.seriesarchitecture.di.modules.AppModule;
 import com.example.rafaelfeliciano.seriesarchitecture.di.modules.FragmentModule;
+import com.example.rafaelfeliciano.seriesarchitecture.di.modules.NetServicesModule;
 
 import javax.inject.Singleton;
 
@@ -18,7 +19,8 @@ import dagger.android.AndroidInjectionModule;
         AndroidInjectionModule.class,
         AppModule.class,
         ActivityModule.class,
-        FragmentModule.class
+        FragmentModule.class,
+        NetServicesModule.class
 })
 public interface AppComponent {
     @Component.Builder

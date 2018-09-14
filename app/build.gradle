@@ -18,6 +18,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         buildConfigField "String", "API_BASE_URL", "\"https://api.trakt.tv/\""
+        buildConfigField "String", "API_KEY", "\"70d03fc7f1f04189e8495464f8d2b2b411394eab533f2409df218ab8c25834b7\""
     }
 
     lintOptions {

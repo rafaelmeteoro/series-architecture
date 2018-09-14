@@ -1,7 +1,7 @@
 package com.example.rafaelfeliciano.seriesarchitecture.ui.splash
 
 import com.example.rafaelfeliciano.seriesarchitecture.interactor.MovieModel
-import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
+import com.example.rafaelfeliciano.seriesarchitecture.model.Catalog
 import com.example.rafaelfeliciano.seriesarchitecture.net.RetrofitDisposableObserver
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.IModelPresenterImpl
 import dagger.Lazy
@@ -14,13 +14,13 @@ constructor(
         private val mMovieModel: Lazy<MovieModel>
 ) : IModelPresenterImpl<SplashContract.View>(), SplashContract.Presenter {
 
-    override fun getMovies(): Observable<List<Movie>> {
-        return execute(mMovieModel.get().getMovie(), MovieObserver(), 0)
+    override fun getCatalog(): Observable<Catalog> {
+        return execute(mMovieModel.get().getCatalog(), CatalogObserver(), 0)
     }
 
-    private inner class MovieObserver : RetrofitDisposableObserver<List<Movie>>() {
-        override fun onNext(t: List<Movie>) {
-            Timber.d("Certo")
+    private inner class CatalogObserver : RetrofitDisposableObserver<Catalog>() {
+        override fun onNext(catalog: Catalog) {
+            Timber.d("Chegou")
         }
     }
 }

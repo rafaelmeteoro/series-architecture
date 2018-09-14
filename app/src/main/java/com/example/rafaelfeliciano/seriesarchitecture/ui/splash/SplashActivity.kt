@@ -27,6 +27,6 @@ class SplashActivity : PresenterIActivity<SplashContract.Presenter>(), SplashCon
 
     override fun setUpView() {
         super.setUpView()
-        mPresenter.getMovies()
+        mPresenter.getCatalog()
     }
 }

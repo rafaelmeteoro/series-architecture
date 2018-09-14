@@ -8,6 +8,8 @@ import com.example.rafaelfeliciano.seriesarchitecture.di.AppInjector
 import com.squareup.leakcanary.LeakCanary
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import io.realm.Realm
+import io.realm.RealmConfiguration
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -15,6 +17,9 @@ class App : Application(), HasActivityInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    @Inject
+    lateinit var realmConfiguration: RealmConfiguration
 
     override fun onCreate() {
         super.onCreate()
@@ -26,11 +31,16 @@ class App : Application(), HasActivityInjector {
         LeakCanary.install(this)
         Timber.plant(Timber.DebugTree())
         AppInjector.init(this)
+        initDB()
     }
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this)
+    }
+
+    private fun initDB() {
+        Realm.setDefaultConfiguration(realmConfiguration)
     }
 
     override fun activityInjector() = dispatchingAndroidInjector

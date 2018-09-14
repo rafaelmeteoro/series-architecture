@@ -6,7 +6,6 @@ import com.example.rafaelfeliciano.seriesarchitecture.net.RetrofitDisposableObse
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.IModelPresenterImpl
 import dagger.Lazy
 import io.reactivex.Observable
-import timber.log.Timber
 import javax.inject.Inject
 
 class SplashPresenter @Inject
@@ -20,7 +19,7 @@ constructor(
 
     private inner class CatalogObserver : RetrofitDisposableObserver<Catalog>() {
         override fun onNext(catalog: Catalog) {
-            Timber.d("Chegou")
+            getView()?.navigateToMovies()
         }
     }
 }

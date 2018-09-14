@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIActivity
+import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.MoviesActivity
 import javax.inject.Inject
 
 class SplashActivity : PresenterIActivity<SplashContract.Presenter>(), SplashContract.View {
@@ -28,5 +29,10 @@ class SplashActivity : PresenterIActivity<SplashContract.Presenter>(), SplashCon
     override fun setUpView() {
         super.setUpView()
         mPresenter.getCatalog()
+    }
+
+    override fun navigateToMovies() {
+        startActivity(MoviesActivity.getIntent(this))
+        finish()
     }
 }

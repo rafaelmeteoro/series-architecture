@@ -10,6 +10,7 @@ import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIFragment
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.adapters.MoviesAdapter
+import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.decoration.MovieSpacesDecoration
 import kotlinx.android.synthetic.main.fragment_movies.*
 import javax.inject.Inject
 
@@ -20,6 +21,7 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
 
     private var moviesAdapter: MoviesAdapter? = null
     private var movieItems: MutableList<Movie>? = null
+    private var movieSpacesDecoration: MovieSpacesDecoration? = null
 
     companion object {
 
@@ -59,6 +61,10 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
         moviesAdapter = MoviesAdapter()
         moviesAdapter?.append(items)
         movies_recycler.adapter = moviesAdapter
+        if (movieSpacesDecoration == null) {
+            movieSpacesDecoration = MovieSpacesDecoration()
+            movies_recycler.addItemDecoration(movieSpacesDecoration)
+        }
     }
 
     override fun addItems(items: List<Movie>) {

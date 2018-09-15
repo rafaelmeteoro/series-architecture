@@ -2,4 +2,6 @@
 <resources>
     <dimen name="toolbar_navigation_margin">20dp</dimen>
     <dimen name="hpad">16dp</dimen>
+    <dimen name="logo_size">36dp</dimen>
+    <dimen name="logo_margin">8dp</dimen>
 </resources>

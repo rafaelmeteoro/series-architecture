@@ -10,6 +10,7 @@ import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIFragment
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.adapters.MoviesAdapter
+import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.decoration.LogoDecoration
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.decoration.MovieSpacesDecoration
 import kotlinx.android.synthetic.main.fragment_movies.*
 import javax.inject.Inject
@@ -22,6 +23,7 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
     private var moviesAdapter: MoviesAdapter? = null
     private var movieItems: MutableList<Movie>? = null
     private var movieSpacesDecoration: MovieSpacesDecoration? = null
+    private var logoDecoration: LogoDecoration? = null
 
     companion object {
 
@@ -64,6 +66,10 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
         if (movieSpacesDecoration == null) {
             movieSpacesDecoration = MovieSpacesDecoration()
             movies_recycler.addItemDecoration(movieSpacesDecoration)
+        }
+        if (logoDecoration == null) {
+            logoDecoration = LogoDecoration(context!!)
+            movies_recycler.addItemDecoration(logoDecoration)
         }
     }
 

@@ -34,6 +34,8 @@ class MoviesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: Movie) = with(itemView) {
             movie_title.text = item.title
+            movie_year.text = itemView.context.resources.getString(R.string.movie_year_format, item.year)
+            movie_overview.text = item.overview
         }
     }
 }

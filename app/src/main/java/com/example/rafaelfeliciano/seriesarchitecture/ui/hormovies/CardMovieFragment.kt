@@ -1,10 +1,12 @@
 package com.example.rafaelfeliciano.seriesarchitecture.ui.hormovies
 
+import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import butterknife.OnClick
 import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import kotlinx.android.synthetic.main.fragment_card_movie.*
@@ -50,5 +52,22 @@ class CardMovieFragment : HorMovieFragment() {
         tv_card_year.text = getString(R.string.movie_year_format, movie.year)
         tv_card_title.text = movie.title
         tv_card_overview.text = movie.overview
+    }
+
+    @OnClick(R.id.btn_card_video)
+    fun openVideo() {
+        activity.listener()?.onVideoClick(movie)
+    }
+
+    @OnClick(R.id.btn_card_homepage)
+    fun openHomePage() {
+        activity.listener()?.onHomePageClick(movie)
+    }
+
+    private fun Activity?.listener() = this as? Listener
+
+    interface Listener {
+        fun onVideoClick(movie: Movie)
+        fun onHomePageClick(movie: Movie)
     }
 }

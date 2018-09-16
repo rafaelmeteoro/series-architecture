@@ -1,6 +1,7 @@
 package com.example.rafaelfeliciano.seriesarchitecture.di.modules
 
 import com.example.rafaelfeliciano.seriesarchitecture.di.ActivityScope
+import com.example.rafaelfeliciano.seriesarchitecture.ui.hormovies.CardMovieFragment
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.MoviesFragment
 import com.example.rafaelfeliciano.seriesarchitecture.ui.widgets.dialog.AppDialog
 import dagger.Module
@@ -16,4 +17,8 @@ abstract class FragmentModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [(MoviesModule::class)])
     abstract fun contributeMoviesFragment(): MoviesFragment
+
+    @ActivityScope
+    @ContributesAndroidInjector
+    abstract fun contributeCardMovieFragment(): CardMovieFragment
 }

@@ -8,7 +8,9 @@ import android.widget.Toast
 import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIActivity
-import kotlinx.android.synthetic.main.fragment_movies.*
+import com.example.rafaelfeliciano.seriesarchitecture.ui.hormovies.adapters.HorMoviesFragmentPagerAdapter
+import com.example.rafaelfeliciano.seriesarchitecture.util.ViewHelper
+import kotlinx.android.synthetic.main.activity_hormovies.*
 import javax.inject.Inject
 
 class HorMoviesActivity : PresenterIActivity<HorMoviesContract.Presenter>(), HorMoviesContract.View {
@@ -21,6 +23,7 @@ class HorMoviesActivity : PresenterIActivity<HorMoviesContract.Presenter>(), Hor
     internal lateinit var presenter: HorMoviesContract.Presenter
 
     private lateinit var mCards: MutableList<Movie>
+    private lateinit var moviesFragmentAdapter: HorMoviesFragmentPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,10 @@ class HorMoviesActivity : PresenterIActivity<HorMoviesContract.Presenter>(), Hor
             }
         })
 
+        moviesFragmentAdapter = HorMoviesFragmentPagerAdapter(supportFragmentManager, ViewHelper.dpToPx(2f))
+
+        viewPager.adapter = moviesFragmentAdapter
+
         presenter.getMovies()
     }
 
@@ -51,6 +58,7 @@ class HorMoviesActivity : PresenterIActivity<HorMoviesContract.Presenter>(), Hor
     override fun setItems(items: List<Movie>) {
         mCards = ArrayList()
         mCards.addAll(items)
+        moviesFragmentAdapter.setItems(mCards)
     }
 
     override fun setPageCount(count: Int, selected: Int) {

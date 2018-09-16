@@ -2,13 +2,12 @@ package com.example.rafaelfeliciano.seriesarchitecture.ui.movies
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIFragment
+import com.example.rafaelfeliciano.seriesarchitecture.ui.hormovies.HorMoviesActivity
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.adapters.MoviesAdapter
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.decoration.LogoDecoration
 import com.example.rafaelfeliciano.seriesarchitecture.ui.movies.decoration.MovieSpacesDecoration
@@ -38,6 +37,18 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movies, container, false)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.movies_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_advance -> navigate()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun getPresenter(): MoviesContract.Presenter {
@@ -80,5 +91,9 @@ class MoviesFragment : PresenterIFragment<MoviesContract.Presenter>(), MoviesCon
 
     override fun onMoviesError() {
         Toast.makeText(activity, "Ocorreu um erro", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigate() {
+        startActivity(HorMoviesActivity.getIntent(context!!))
     }
 }

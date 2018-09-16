@@ -32,6 +32,7 @@ class NetModule {
     @Reusable
     fun provideGson(): Gson =
             GsonBuilder()
+                    .excludeFieldsWithoutExposeAnnotation()
                     .disableHtmlEscaping()
                     .create()
 

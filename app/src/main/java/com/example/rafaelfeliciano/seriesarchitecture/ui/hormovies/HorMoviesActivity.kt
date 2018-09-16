@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewTreeObserver
+import android.widget.Toast
 import com.example.rafaelfeliciano.seriesarchitecture.R
 import com.example.rafaelfeliciano.seriesarchitecture.model.Movie
 import com.example.rafaelfeliciano.seriesarchitecture.ui.base.PresenterIActivity
@@ -39,9 +40,24 @@ class HorMoviesActivity : PresenterIActivity<HorMoviesContract.Presenter>(), Hor
                 setUpPagerView()
             }
         })
+
+        presenter.getMovies()
     }
 
     private fun setUpPagerView() {
 
+    }
+
+    override fun setItems(items: List<Movie>) {
+        mCards = ArrayList()
+        mCards.addAll(items)
+    }
+
+    override fun setPageCount(count: Int, selected: Int) {
+
+    }
+
+    override fun onMoviesError() {
+        Toast.makeText(this, "Ocorreu um erro", Toast.LENGTH_SHORT).show()
     }
 }
